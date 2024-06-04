@@ -14,28 +14,28 @@ the sake of monthwise analysis.
 
 
 The data consisted of:
-|:---------------------------------|:---------------------------------|
-| 03 to 04 2016                    | 04 to 05 2016                    |
-|:---------------------------------|:---------------------------------|
-|dailyActivity_merged.csv          |dailyActivity_merged.csv		  |
-|heartrate_seconds_merged.csv	   |dailyCalories_merged.csv		  |
-|hourlyCalories_merged.csv         |dailyIntensities_merged.csv		  |
-|hourlyIntensities_merged.csv      |dailySteps_merged.csv			  |
-|hourlySteps_merged.csv            |heartrate_seconds_merged.csv	  |
-|minuteCaloriesNarrow_merged.csv   |hourlyCalories_merged.csv		  |
-|minuteIntensitiesNarrow_merged.csv|hourlyIntensities_merged.csv	  |
-|minuteMETsNarrow_merged.csv       |hourlySteps_merged.csv			  |
-|minuteSleep_merged.csv			   |minuteCaloriesNarrow_merged.csv	  |
-|minuteStepsNarrow_merged.csv	   |minuteCaloriesWide_merged.csv	  |
-|weightLogInfo_merged.csv		   |minuteIntensitiesNarrow_merged.csv|
-|								   |minuteIntensitiesWide_merged.csv  |
-|								   |minuteMETsNarrow_merged.csv		  |
-|								   |minuteSleep_merged.csv			  |
-|								   |minuteStepsNarrow_merged.csv      |
-|								   |minuteStepsWide_merged.csv		  |
-|								   |sleepDay_merged.csv			      |
-|								   |weightLogInfo_merged.csv	      |
-|:---------------------------------|:---------------------------------|
+|:---------------------------------|:-------------------------------------------|
+| 03 to 04 2016                    | 04 to 05 2016                    		|
+|:---------------------------------|:-------------------------------------------|
+|dailyActivity_merged.csv          |dailyActivity_merged.csv	      		|
+|heartrate_seconds_merged.csv	   |dailyCalories_merged.csv	      		|
+|hourlyCalories_merged.csv         |dailyIntensities_merged.csv	      		|
+|hourlyIntensities_merged.csv      |dailySteps_merged.csv		  	|
+|hourlySteps_merged.csv            |heartrate_seconds_merged.csv	  	|
+|minuteCaloriesNarrow_merged.csv   |hourlyCalories_merged.csv		  	|
+|minuteIntensitiesNarrow_merged.csv|hourlyIntensities_merged.csv	  	|
+|minuteMETsNarrow_merged.csv       |hourlySteps_merged.csv		  	|
+|minuteSleep_merged.csv		   |minuteCaloriesNarrow_merged.csv	  	|
+|minuteStepsNarrow_merged.csv	   |minuteCaloriesWide_merged.csv	  	|
+|weightLogInfo_merged.csv	   |minuteIntensitiesNarrow_merged.csv	  	|
+|				   |minuteIntensitiesWide_merged.csv  	  	|
+|				   |minuteMETsNarrow_merged.csv		  	|
+|				   |minuteSleep_merged.csv			|
+|				   |minuteStepsNarrow_merged.csv      		|
+|				   |minuteStepsWide_merged.csv		  	|
+|				   |sleepDay_merged.csv			      	|
+|				   |weightLogInfo_merged.csv	      		|
+|:---------------------------------|:-------------------------------------------|
 
 At first glance it appeared as if there were a lot more metrics available for the second month. However, 
 upon closer inspection it was noted that most of the files contained duplicated information presented in 
@@ -62,72 +62,72 @@ into MS SQL studio using the 'Import Flat files' option with Schema=dbo.
 For the 
 
 dailyActivity_merged.csv
-|:--------------------------|:----------|:--------------|:--------------|
-|Column Name				| Data Type	|Primary Key	|Allow Nulls	|
-|:--------------------------|:----------|:--------------|:--------------|
-|Id							|bigint		|False			|False			|
-|ActivityDate				|date		|False			|False			|
-|TotalSteps					|smallint	|False			|False			|
-|TotalDistance				|float		|False			|False			|
-|TrackerDistance			|float		|False			|False			|
-|LoggedActivitiesDistance	|float		|False			|False			|
-|VeryActiveDistance			|float		|False			|False			|
-|ModeratelyActiveDistance	|float		|False			|False			|
-|LightActiveDistance		|float		|False			|False			|
-|SedentaryActiveDistance	|float		|False			|False			|
-|VeryActiveMinutes			|tinyint	|False			|False			|
-|FairlyActiveMinutes		|smallint	|False			|False			|
-|LightlyActiveMinutes		|smallint	|False			|False			|
-|SedentaryMinutes			|smallint	|False			|False			|
-|Calories					|smallint	|False			|False			|
-|:--------------------------|:----------|:--------------|:--------------|
+|:------------------------------|:--------------|:--------------|:--------------|
+|Column Name			| Data Type	|Primary Key	|Allow Nulls	|
+|:------------------------------|:--------------|:--------------|:--------------|
+|Id				|bigint		|False		|False		|
+|ActivityDate			|date		|False		|False		|
+|TotalSteps			|smallint	|False		|False		|
+|TotalDistance			|float		|False		|False		|
+|TrackerDistance		|float		|False		|False		|
+|LoggedActivitiesDistance	|float		|False		|False		|
+|VeryActiveDistance		|float		|False		|False		|
+|ModeratelyActiveDistance	|float		|False		|False		|
+|LightActiveDistance		|float		|False		|False		|
+|SedentaryActiveDistance	|float		|False		|False		|
+|VeryActiveMinutes		|tinyint	|False		|False		|
+|FairlyActiveMinutes		|smallint	|False		|False		|
+|LightlyActiveMinutes		|smallint	|False		|False		|
+|SedentaryMinutes		|smallint	|False		|False		|
+|Calories			|smallint	|False		|False		|
+|:------------------------------|:--------------|:--------------|:--------------|
 
 heartrate_seconds_merged.csv 
 The Id column data type had to be adjusted to bigint (originally autodetected 'int' was leading to dropped records)
-|:--------------------------|:----------|:--------------|:--------------|
-|Column Name				| Data Type	|Primary Key	|Allow Nulls	|
-|:--------------------------|:----------|:--------------|:--------------|
-|Id							|bigint		|False			|False			|
-|Time						|datetime2	|False			|False			|
-|Value						|tinyint	|False			|False			|
-|:--------------------------|:----------|:--------------|:--------------|
+|:------------------------------|:--------------|:--------------|:--------------|
+|Column Name			| Data Type	|Primary Key	|Allow Nulls	|
+|:------------------------------|:--------------|:--------------|:--------------|
+|Id				|bigint		|False		|False		|
+|Time				|datetime2	|False		|False		|
+|Value				|tinyint	|False		|False		|
+|:------------------------------|:--------------|:--------------|:--------------|
 
 minuteSleep_merged.csv
 The Id column data type had to be adjusted to bigint (originally autodetected 'int' was leading to dropped records)
-|:--------------------------|:----------|:--------------|:--------------|
-|Column Name				| Data Type	|Primary Key	|Allow Nulls	|
-|:--------------------------|:----------|:--------------|:--------------|
-|Id							|bigint		|False			|False			|
-|Time						|datetime2	|False			|False			|
-|Value						|tinyint	|False			|False			|
-|logId						|bigint		|False			|False			|
-|:--------------------------|:----------|:--------------|:--------------|
+|:------------------------------|:--------------|:--------------|:--------------|
+|Column Name			| Data Type	|Primary Key	|Allow Nulls	|
+|:------------------------------|:--------------|:--------------|:--------------|
+|Id				|bigint		|False		|False		|
+|Time				|datetime2	|False		|False		|
+|Value				|tinyint	|False		|False		|
+|logId				|bigint		|False		|False		|
+|:------------------------------|:--------------|:--------------|:--------------|
 
 weightLogInfo_merged.csv
 The Id column data type had to be adjusted to bigint (originally autodetected 'int' was leading to dropped records)
-|:--------------------------|:----------|:--------------|:--------------|
-|Column Name				| Data Type	|Primary Key	|Allow Nulls	|
-|:--------------------------|:----------|:--------------|:--------------|
-|Id							|bigint		|False			|False			|
-|Date						|datetime2	|False			|False			|
-|WeightKg					|float		|False			|False			|
-|WeightPounds				|float		|False			|False			|
-|Fat						|tinyint	|False			|*True*			|
-|BMI						|float		|False			|False			|
-|IsManualReport`			|bit		|False			|False			|
-|logId						|bigint		|False			|False			|
-|:--------------------------|:----------|:--------------|:--------------|
+|:------------------------------|:--------------|:--------------|:--------------|
+|Column Name			| Data Type	|Primary Key	|Allow Nulls	|
+|:------------------------------|:--------------|:--------------|:--------------|
+|Id				|bigint		|False		|False		|
+|Date				|datetime2	|False		|False		|
+|WeightKg			|float		|False		|False		|
+|WeightPounds			|float		|False		|False		|
+|Fat				|tinyint	|False		|*True*		|
+|BMI				|float		|False		|False		|
+|IsManualReport`		|bit		|False		|False		|
+|logId				|bigint		|False		|False		|
+|:------------------------------|:--------------|:--------------|:--------------|
 
 sleepDay_merged.csv
-|:--------------------------|:----------|:--------------|:--------------|
-|Column Name				| Data Type	|Primary Key	|Allow Nulls	|
-|:--------------------------|:----------|:--------------|:--------------|
-|Id							|bigint		|False			|False			|
-|SleepDay					|datetime2	|False			|False			|
-|TotalSleepRecords			|tinyint	|False			|False			|
-|TotalMinutesAsleep			|smallint	|False			|False			|
-|TotalTimeInBed				|smallint	|False			|False			|
-|:--------------------------|:----------|:--------------|:--------------|
+|:------------------------------|:--------------|:--------------|:--------------|
+|Column Name			| Data Type	|Primary Key	|Allow Nulls	|
+|:------------------------------|:--------------|:--------------|:--------------|
+|Id				|bigint		|False		|False		|
+|SleepDay			|datetime2	|False		|False		|
+|TotalSleepRecords		|tinyint	|False		|False		|
+|TotalMinutesAsleep		|smallint	|False		|False		|
+|TotalTimeInBed			|smallint	|False		|False		|
+|:------------------------------|:--------------|:--------------|:--------------|
 
 
 * Data Modification:
