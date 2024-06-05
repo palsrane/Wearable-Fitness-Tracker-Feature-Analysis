@@ -11,11 +11,11 @@ the people who had reported heart rate in the first month.
 fat, appeared less popular and were reported by very few people, and though reports of weight increased in the second month, that was only because of 
 increase in report rate by one user.
 
-* Insights and actionable items:
+* Insights and Recommendations:
 * ------------------------------
 
 ** Changing heart rate collection frequency:
-** ------------------------------------------
+
 It was interesting that heart rate was reported by less than 50% of the population. Activity rtacker watches have built-in heart rate monitors. However, 
 it is possible that users are not using this feature in order to prolong the battery life on their devices. 
 During the analysis it was noted that the heart rate is being collected every 5 seconds, and hence beats-per minute are being computed on a rolling basis. 
@@ -27,7 +27,7 @@ day to day activities.
 A longer battery life would also be a great marketing point, and this would only need update to the software.
 
 ** Adding automatic sleep detection:
-** ----------------------------------
+
 Sleep records are missing in more than 25% of the population, and even when a user reported sleep, the frequency is quite low. This implies that the 
 user is possibly having to manually start sleep recording.
 Respiration is known to slow down during sleep. Respiration shows up as low frequency variations in heart rate recordings. Since, the smart watches use 
@@ -36,7 +36,7 @@ respiratory frequency along with lower activity levels could be reported as slee
 This automatic detection could be in addition to the manual start of sleep, and would be a really appealing feature to the future buyers of the device.
 
 ** Encourage users to log activities:
-** ----------------------------------
+
 Activity is being logged automatically as very active minutes. However, prompting a user to log an activity after the end of a very active session might 
 increase the logging frequency of activities and help us provide the user with better health recommendations.
 Weight and fat scale that can integrate with the smart activity device:
