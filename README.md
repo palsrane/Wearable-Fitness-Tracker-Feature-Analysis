@@ -1,6 +1,3 @@
-Viewing all the .md files in this project in the 'raw' format (top right corner of the viewer) might give you   
-the best experience.  
-
 Analyzing the feature use among Fitbit users:  
 ----------------------------------------------- 
   
