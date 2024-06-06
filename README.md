@@ -21,16 +21,15 @@ Different files in this repository:
   
  * DataCleaningAndAnalysis.md file contains  
     * An overview of all the different files available in the folders listed above,  
-	*** Detailed makeup of the files used in the initial steps, and the parameters from those files  
-	    that were focused on,  
-	*** Steps used in SQL queries to generate the combined and aggregated tables,  
-	*** Summarization and visualization of results with EXCEL.  
+    * Detailed makeup of the files used in the initial steps, and the parameters from those files that were focused on,  
+    * Steps used in SQL queries to generate the combined and aggregated tables,  
+    * Summarization and visualization of results with EXCEL.  
   
  * DataCleaning.sql file gives the SQL queries used for initial data cleaning and organization.
 
  * ResultInsightsAndActionableItems.md file has  
-	*** Summary of the final findings, and  
-	*** Insights and Recommendations based on final findings.  
+    * Summary of the final findings, and  
+    * Insights and Recommendations based on final findings.  
   
  * FinalCombinedResults.pdf contains the visualizations for the results, which are also available in the Excel format in FinalCombinedResults.xlsx.   
 
