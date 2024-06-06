@@ -14,7 +14,6 @@ the sake of monthwise analysis.
 
 
 The data consisted of:
-|:---------------------------------|:-------------------------------------------|
 | 03 to 04 2016                    | 04 to 05 2016                    		|
 |:---------------------------------|:-------------------------------------------|
 |dailyActivity_merged.csv          |dailyActivity_merged.csv	      		|
