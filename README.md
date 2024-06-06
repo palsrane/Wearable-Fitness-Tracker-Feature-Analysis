@@ -15,8 +15,7 @@ MS Excel was used for furhter summarization and visualization of the results.
   
 Different files in this repository:  
 ------------------------------------    
-  
--- Case-Study-2_-How-can-a-wellness-technology-company-play-it-smart.pdf contains the initial brief for the project.
+ * Case-Study-2_-How-can-a-wellness-technology-company-play-it-smart.pdf contains the initial brief for the project.
  
 ** All the csv and xlsx files are contained in 'Fitabase Data 3.12.16-4.11.16' AND 'Fitabase Data 4.12.16-5.12.16' folders.
   
