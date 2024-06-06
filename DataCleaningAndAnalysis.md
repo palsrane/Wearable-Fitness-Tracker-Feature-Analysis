@@ -1,5 +1,5 @@
-** Data Overview:
-** ------------
+ * Data Overview:
+ * ------------
 The data was acquired from publicly available dataset on kaggle https://www.kaggle.com/datasets/arashnic/fitbit.
 The data consisted of two separate folders one for the month of Mar-Apr and second for the month of Apr-May 2016.
 
@@ -34,7 +34,7 @@ The data consisted of:
 |				   |minuteStepsWide_merged.csv		  	|
 |				   |sleepDay_merged.csv			      	|
 |				   |weightLogInfo_merged.csv	      		|
-|:---------------------------------|:-------------------------------------------|
+
 
 At first glance it appeared as if there were a lot more metrics available for the second month. However, 
 upon closer inspection it was noted that most of the files contained duplicated information presented in 
@@ -50,8 +50,8 @@ VeryActiveMinutes	FairlyActiveMinutes	LightlyActiveMinutes	SedentaryMinutes	Calo
 
 They were missing the weight, heart rate and sleep from the metrics. 
 
-** Loading and Cleaning:
-** ------------------------
+ * Loading and Cleaning:
+ * ------------------------
 The initial cleaning and formatting process was performed in SQL with MS SQL Server Management Studio. 
 
 dailyActivity_merged.csv, heartrate_seconds_merged.csv, minuteSleep_merged.csv, and weightLogInfo_merged.csv from the 03-04 folder, and 
@@ -61,7 +61,6 @@ into MS SQL studio using the 'Import Flat files' option with Schema=dbo.
 For the 
 
 dailyActivity_merged.csv
-|:------------------------------|:--------------|:--------------|:--------------|
 |Column Name			| Data Type	|Primary Key	|Allow Nulls	|
 |:------------------------------|:--------------|:--------------|:--------------|
 |Id				|bigint		|False		|False		|
@@ -79,32 +78,26 @@ dailyActivity_merged.csv
 |LightlyActiveMinutes		|smallint	|False		|False		|
 |SedentaryMinutes		|smallint	|False		|False		|
 |Calories			|smallint	|False		|False		|
-|:------------------------------|:--------------|:--------------|:--------------|
 
 heartrate_seconds_merged.csv 
 The Id column data type had to be adjusted to bigint (originally autodetected 'int' was leading to dropped records)
-|:------------------------------|:--------------|:--------------|:--------------|
 |Column Name			| Data Type	|Primary Key	|Allow Nulls	|
 |:------------------------------|:--------------|:--------------|:--------------|
 |Id				|bigint		|False		|False		|
 |Time				|datetime2	|False		|False		|
 |Value				|tinyint	|False		|False		|
-|:------------------------------|:--------------|:--------------|:--------------|
 
 minuteSleep_merged.csv
 The Id column data type had to be adjusted to bigint (originally autodetected 'int' was leading to dropped records)
-|:------------------------------|:--------------|:--------------|:--------------|
 |Column Name			| Data Type	|Primary Key	|Allow Nulls	|
 |:------------------------------|:--------------|:--------------|:--------------|
 |Id				|bigint		|False		|False		|
 |Time				|datetime2	|False		|False		|
 |Value				|tinyint	|False		|False		|
 |logId				|bigint		|False		|False		|
-|:------------------------------|:--------------|:--------------|:--------------|
 
 weightLogInfo_merged.csv
 The Id column data type had to be adjusted to bigint (originally autodetected 'int' was leading to dropped records)
-|:------------------------------|:--------------|:--------------|:--------------|
 |Column Name			| Data Type	|Primary Key	|Allow Nulls	|
 |:------------------------------|:--------------|:--------------|:--------------|
 |Id				|bigint		|False		|False		|
@@ -115,10 +108,8 @@ The Id column data type had to be adjusted to bigint (originally autodetected 'i
 |BMI				|float		|False		|False		|
 |IsManualReport`		|bit		|False		|False		|
 |logId				|bigint		|False		|False		|
-|:------------------------------|:--------------|:--------------|:--------------|
 
 sleepDay_merged.csv
-|:------------------------------|:--------------|:--------------|:--------------|
 |Column Name			| Data Type	|Primary Key	|Allow Nulls	|
 |:------------------------------|:--------------|:--------------|:--------------|
 |Id				|bigint		|False		|False		|
@@ -126,21 +117,19 @@ sleepDay_merged.csv
 |TotalSleepRecords		|tinyint	|False		|False		|
 |TotalMinutesAsleep		|smallint	|False		|False		|
 |TotalTimeInBed			|smallint	|False		|False		|
-|:------------------------------|:--------------|:--------------|:--------------|
 
-
-* Data Modification:
-* -------------------------------
+ * Data Modification:
+ * -------------------------------
 In order to add the sleep, heart rate, and weight, those matrics needed to be in the 'per day' format. 
 
-** Understanding how sleep data was summarized by the day:
+   * Understanding how sleep data was summarized by the day:
 In sleepDay_merged.csv table for 04-05, there are 5 columns. The columns were compared to the minuteSleep_merged.csv 
 file for the same month to conclude that 
 Each strech of continuous sleep was assigned a new logId.
 The column TotalMinutesAsleep represents all the minutes for a given SleepDay summed up whenever the value=1.
 The TotalTimeInBed represented all the time for a SleepDay, irrespective of what the value was.
 The TotalSleepRecords were the distinct logIds for each user for a given day.
-** Summarizing Mar-Apr minute-by-minute sleep data the same way as available in:
+   * Summarizing Mar-Apr minute-by-minute sleep data the same way as available in:
 The minuteSleep_merged.csv table from 03-04 was summed up in the same way as sleepDay_merged.csv table for 04-05: 
 The data was grouped by Id and logId.
 Minimum date for each unique Id - logId combination was assigned as SleepDay.
@@ -150,7 +139,7 @@ Finally, the TotalMinutesAsleep and TotalTimeInBed were summed up for each day f
 logIds per SleepDay were stored as TotalSleepRecords. The outptu of this query was written into table 
 DailySleepCalculated_03_04_2016, and also saved into DailySleepCalculated_03_04_2016.csv for referencing.
 
-** Computing average daily heart rate:
+   * Computing average daily heart rate:
 The same procedure was followed for heartrate_seconds_merged.csv from both months.
 Upon investigating the files, it was apparent that the records were collected every 5 seconds. However, 
 the averages of the value column was 77 and 79 minutes. Given that a healthy human can not beat that many times in 
@@ -163,14 +152,14 @@ AverageDailyHeartRateCalculated_03_04_2016.csv and AverageDailyHeartRateCalculat
 HourlyHeartRate_Calculated_04_05_2016.csv was also generated by changing the above query a little. The 'Time' 
 column was casted as DATE and as HOUR. Records were groupped by Id, Date, and Hour to compute average hourly heart rate.
 
-** Generating merged daily tables:
+   * Generating merged daily tables:
 For each month, the dailyActivity_merged table was joined with daily sleep, heart rate, and weight tables ON Id and date
 with a FULL OUTER JOIN in order to keep all the records from all the  records from all tables. 
 Two additional columns, overall_Id and overall_date, were added to this table by copying Id and date from Activity, Sleep, 
 heart rate, and weight tables into it. The query results were saved INTO tables TotalDailyActivityTracking_03_04_2016 and
 TotalDailyActivityTracking_04_05_2016, and also as csv files with those same names.
 
-** Generating summed up tables over the each of the months
+   * Generating summed up tables over the each of the months
 The TotalDailyActivityTracking tables from each month were summarized by grouping by Id and counting the number of non-NULL
 records for Activity, Logged Activities Distance, Sedentary Activities Distance, Sleep, Heart Rate, Weight, Manual Weight, 
 and Fat for each overall_id, and averaging Steps, calories, sleep minutes, time in bed, Heart Rate, weight, and BMI over the
@@ -178,19 +167,19 @@ days in each of the month creating TotalDailyActivitySummedUp_03_04_2016 and Tot
 saving each as a CSV file. 
 Given that COUNT and AVG functions from MS SQL server were used, any NAs would be ignored in the counting and averaging process.
 
-** Summarizing feature use
+   * Summarizing feature use
 In order to look at metric use, number of users that used each of the metrics atleast once was counted for each of the 
 Activity, Logged Activities Distance, Sedentary Activities Distance, Sleep, Heart Rate, Weight, and Manual Weight.
 Records for each month were saved as FeatureUse_03_04_2016 and FeatureUse_04_05_2016, and corresponding csv files. 
 
-* Data Analysis in Excel:
-* -----------------------
+ * Data Analysis in Excel:
+ * -----------------------
 The TotalDailyActivitySummedUp_03_04_2016.csv and TotalDailyActivitySummedUp_04_05_2016.csv files were opened in Excel and saved as
 .xlsx files. 
 
 The Activity, Logged Activities Distance, Sleep, Heart Rate, Weight, Manual Weight, and Fat columns for each user were used for analysis.
 
--- Sunburst plot
+   * Sunburst plot
 A summary code for each user was generated with following formula 
 =CONCATENATE(SWITCH(B2,0,"_","A_"),SWITCH(C2,0,"_","Lad_"),SWITCH(E2,0,"_","Sl_"),SWITCH(F2,0,"_","Hr_"),SWITCH(G2,0,"_","Wt_"),SWITCH(H2,0,"_","M_"),SWITCH(I2,0,"_","F"))
 
@@ -198,12 +187,12 @@ The resulting code column was converted into a pivot table to assess how many pe
 
 The Pivot table was used to generate a sunburst plot of feature use.
 
--- Heat plot
+   * Heat plot
 The columns representing the different metrics mentioned above and their monthly use by each user were copied into a separate sheet, 
 and conditional formatting was used to color the cells based on their values.
 
 Conditionally formatted cells were copied in another table, and each column in this table was ordered by values in each column.
 
--- Scatter plot
+   * Scatter plot
 Scatter plot was generated by adding jitter to the same metrics as above using the RAND() *0.5 to each value in order to improve 
 the visualization of overlapping points, and plotting them against the mectrics on x axis. 
