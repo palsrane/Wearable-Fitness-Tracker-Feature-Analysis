@@ -1,7 +1,7 @@
 Viewing all the .md files in this project in the 'raw' format (top right corner of the viewer) might give you   
 the best experience.  
 
-* Analyzing the feature use among Fitbit users:  
+Analyzing the feature use among Fitbit users:  
 ----------------------------------------------- 
   
 This project analyzed the use data from 35 fitbit used between March and May 2016. 
@@ -17,20 +17,20 @@ Different files in this repository:
 ------------------------------------    
  * Case-Study-2_-How-can-a-wellness-technology-company-play-it-smart.pdf contains the initial brief for the project.
  
-** All the csv and xlsx files are contained in 'Fitabase Data 3.12.16-4.11.16' AND 'Fitabase Data 4.12.16-5.12.16' folders.
+ * All the csv and xlsx files are contained in 'Fitabase Data 3.12.16-4.11.16' AND 'Fitabase Data 4.12.16-5.12.16' folders.
   
-** DataCleaningAndAnalysis.md file contains  
-	*** An overview of all the different files available in the folders listed above,  
+ * DataCleaningAndAnalysis.md file contains  
+    * An overview of all the different files available in the folders listed above,  
 	*** Detailed makeup of the files used in the initial steps, and the parameters from those files  
 	    that were focused on,  
 	*** Steps used in SQL queries to generate the combined and aggregated tables,  
 	*** Summarization and visualization of results with EXCEL.  
   
-** DataCleaning.sql file gives the SQL queries used for initial data cleaning and organization.
+ * DataCleaning.sql file gives the SQL queries used for initial data cleaning and organization.
 
-** ResultInsightsAndActionableItems.md file has  
+ * ResultInsightsAndActionableItems.md file has  
 	*** Summary of the final findings, and  
 	*** Insights and Recommendations based on final findings.  
   
-** FinalCombinedResults.pdf contains the visualizations for the results, which are also available in the Excel format in FinalCombinedResults.xlsx.   
+ * FinalCombinedResults.pdf contains the visualizations for the results, which are also available in the Excel format in FinalCombinedResults.xlsx.   
 
