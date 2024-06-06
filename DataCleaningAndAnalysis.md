@@ -1,15 +1,15 @@
- * Data Overview:
- * ------------
+Data Overview:
+------------
 The data was acquired from publicly available dataset on kaggle https://www.kaggle.com/datasets/arashnic/fitbit.
 The data consisted of two separate folders one for the month of Mar-Apr and second for the month of Apr-May 2016.
 
-(Following information was extracted after the initial cleaning processing and joining the differnt matrics tables)
+(The following information was extracted after the initial cleaning processing and joining the different matrics tables)
 There are a 33 distinct users in the 03-04 month files and 35 distinct users in the 04-05 month.
 The 03-04 records contained data from 35 users, spanned over 2016-03-11 and 2016-04-12, a total of 33 days.
 The 04-05 records contained data from 33 users, spanned over 2016-04-12 and 2016-05-12, a total of 31 days.
 
-There was an overlap of 2016-04-12 in between both the months. 
-However, since the 04-05 contained data from two additional users (User Ids 2891001357 and 6391747486), the records were kept as is for 
+There was an overlap of 2016-04-12 in between both months. 
+However, since 04-05 was missing data from two users (User Ids 2891001357 and 6391747486), the records were kept as is for 
 the sake of monthwise analysis.
 
 
@@ -50,8 +50,8 @@ VeryActiveMinutes	FairlyActiveMinutes	LightlyActiveMinutes	SedentaryMinutes	Calo
 
 They were missing the weight, heart rate and sleep from the metrics. 
 
- * Loading and Cleaning:
- * ------------------------
+Loading and Cleaning:
+------------------------
 The initial cleaning and formatting process was performed in SQL with MS SQL Server Management Studio. 
 
 dailyActivity_merged.csv, heartrate_seconds_merged.csv, minuteSleep_merged.csv, and weightLogInfo_merged.csv from the 03-04 folder, and 
@@ -118,8 +118,8 @@ sleepDay_merged.csv
 |TotalMinutesAsleep		|smallint	|False		|False		|
 |TotalTimeInBed			|smallint	|False		|False		|
 
- * Data Modification:
- * -------------------------------
+Data Modification:
+-------------------
 In order to add the sleep, heart rate, and weight, those matrics needed to be in the 'per day' format. 
 
    * Understanding how sleep data was summarized by the day:
@@ -172,8 +172,8 @@ In order to look at metric use, number of users that used each of the metrics at
 Activity, Logged Activities Distance, Sedentary Activities Distance, Sleep, Heart Rate, Weight, and Manual Weight.
 Records for each month were saved as FeatureUse_03_04_2016 and FeatureUse_04_05_2016, and corresponding csv files. 
 
- * Data Analysis in Excel:
- * -----------------------
+Data Analysis and visualizations in Excel:
+------------------------------------------
 The TotalDailyActivitySummedUp_03_04_2016.csv and TotalDailyActivitySummedUp_04_05_2016.csv files were opened in Excel and saved as
 .xlsx files. 
 
